@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import DOMPurify from "dompurify";
 
 
 function EditProduct(props) {
@@ -243,7 +244,7 @@ function EditProduct(props) {
                            <div className="col-md-4 form-group mb-3">
                            <label>Kép</label>
                            <input type="file" name="image" onChange={handleImage}  className="form-control" />
-                           <img src={`http://127.0.0.1:8000/${productInput.image}`} width="50px" alt={productInput.name}/>
+                           <img src={`http://127.0.0.1:8000/${DOMPurify.sanitize(productInput.image)}`} width="50px" alt={productInput.name}/>
                            <small className="text-danger">{errorList.image}</small>
                            </div>
 
